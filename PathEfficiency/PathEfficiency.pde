@@ -1,12 +1,12 @@
 String filename = "";
-int participant = 14;
+int participant = 102;
 
 String savefile = "data/" + str(participant) + "_PE.txt";
 ArrayList<String> saveList = new ArrayList<String>();
 
 void setup(){
-  for(int i = 0; i < 60; i++){
-    for(int j = 0; j < 12; j++){
+  for(int i = 0; i < 80; i++){
+    for(int j = 0; j < 3; j++){
       filename = str(participant)+ "/" +str(participant) + "_" + str(i) + "_" + str(j) + ".txt";
       String [] lines = loadStrings(filename);
       float dummyPath = 0;

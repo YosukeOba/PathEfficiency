@@ -1,0 +1,1 @@
+copy *.txt all¥merge.txt
