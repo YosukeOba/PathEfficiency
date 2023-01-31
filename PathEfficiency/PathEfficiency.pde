@@ -23,6 +23,7 @@ void setup(){
       int lastPositionY = 0;
       int targetX = 0;
       int targetY = 0;
+      int checkPE = 0;
       for(int k = 0; k < lines.length-1; k++){
         String [] list = split(lines[k], ",");
         String [] nextList = split(lines[k+1], ",");
@@ -36,7 +37,10 @@ void setup(){
             str = str + list[l] + ",";
           }
         }
-       
+        
+        if(float(nextList[7]) - float(list[7]) < - 120){
+          checkPE = 1;
+        }
         dummyPath += sqrt(pow(float(nextList[7]) - float(list[7]),2) + pow(float(nextList[8]) - float(list[8]),2));
         realPath += sqrt(pow(float(nextList[9]) - float(list[9]),2) + pow(float(nextList[10]) - float(list[10]),2));
         
@@ -55,7 +59,7 @@ void setup(){
       MT = endTime - startTime;
       PE = (dummyPath/realPath)*100;
       println(str);
-      str = str + str(MT) + "," + str(error) + "," + str(dummyPath)+","+str(realPath)+","+str(PE)+","+str(targetX)+","+str(targetY)+","+str(lastPositionX)+","+str(lastPositionY)+","+str(i)+","+str(j)+","+str(practice);
+      str = str + str(MT) + "," + str(error) + "," + str(dummyPath)+","+str(realPath)+","+str(PE)+","+str(checkPE)+","+str(targetX)+","+str(targetY)+","+str(lastPositionX)+","+str(lastPositionY)+","+str(i)+","+str(j)+","+str(practice);
       saveList.add(str);
       println(str);
     }
