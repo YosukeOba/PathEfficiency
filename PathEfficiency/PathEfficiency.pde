@@ -1,12 +1,12 @@
 String filename = "";
-int participant = 13;
+int participant = 1001;
 
 String savefile = "data/" + str(participant) + "_PE.txt";
 ArrayList<String> saveList = new ArrayList<String>();
 
 void setup(){
-  for(int i = 0; i < 168; i++){
-    for(int j = 0; j < 6; j++){
+  for(int i = 0; i < 22; i++){
+    for(int j = 0; j < 40; j++){
       filename = str(participant)+ "/" +str(participant) + "_" + str(i) + "_" + str(j) + ".txt";
       String [] lines = loadStrings(filename);
       float dummyPath = 0;
@@ -28,37 +28,39 @@ void setup(){
         String [] list = split(lines[k], ",");
         String [] nextList = split(lines[k+1], ",");
         if(k == 0){
-          startTime = int(list[6]);
+          startTime = int(list[7]);
         }
         if(A < int(list[1])){
           A = int(list[1]);
           str = "";
-          for(int l = 0; l < 6; l++){
+          for(int l = 0; l < 7; l++){
             str = str + list[l] + ",";
           }
         }
         
-        if(float(nextList[7]) - float(list[7]) < - 120){
-          checkPE = 1;
-        }
-        dummyPath += sqrt(pow(float(nextList[7]) - float(list[7]),2) + pow(float(nextList[8]) - float(list[8]),2));
-        realPath += sqrt(pow(float(nextList[9]) - float(list[9]),2) + pow(float(nextList[10]) - float(list[10]),2));
+        //if(float(nextList[7]) - float(list[7]) < - 120){
+        //  checkPE = 1;
+        //}
+        dummyPath += sqrt(pow(float(nextList[8]) - float(list[8]),2) + pow(float(nextList[9]) - float(list[9]),2));
+        realPath += sqrt(pow(float(nextList[10]) - float(list[10]),2) + pow(float(nextList[11]) - float(list[11]),2));
         
-        error = int(nextList[11]);
-        endTime = int(nextList[6]);
-        practice = int(nextList[14]);
-        lastPositionX = int(nextList[7]);
-        lastPositionY = int(nextList[8]);
-        targetY = 11;
+        error = int(nextList[12]);
+        endTime = int(nextList[7]);
+        practice = int(nextList[15]);
+        lastPositionX = int(nextList[8]);
+        lastPositionY = int(nextList[9]);
+        //targetY = 11;
+        targetY = 0;
         if(A == 350){
-          targetX = 1125+11;
+          targetX = 1125+10;
         } else {
-          targetX = 1300+11;
+          targetX = 1300+10;
         }
       }
       MT = endTime - startTime;
       PE = (dummyPath/realPath)*100;
       println(str);
+      //str = str + str(MT) + "," + str(error) + "," + str(dummyPath)+","+str(realPath)+","+str(PE)+","+str(checkPE)+","+str(targetX)+","+str(targetY)+","+str(lastPositionX)+","+str(lastPositionY)+","+str(i)+","+str(j)+","+str(practice);
       str = str + str(MT) + "," + str(error) + "," + str(dummyPath)+","+str(realPath)+","+str(PE)+","+str(checkPE)+","+str(targetX)+","+str(targetY)+","+str(lastPositionX)+","+str(lastPositionY)+","+str(i)+","+str(j)+","+str(practice);
       saveList.add(str);
       println(str);
